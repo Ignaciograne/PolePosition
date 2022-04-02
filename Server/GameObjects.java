@@ -1,9 +1,9 @@
-public class GameObject {
+public class GameObjects {
 	private int position;
 	private int health;
 	private int points;
 
-	public GameObject(int position, int health, int points) {
+	public GameObjects(int position, int health, int points) {
 		this.position = position;
 		this.health = health;
 		this.points = points;
