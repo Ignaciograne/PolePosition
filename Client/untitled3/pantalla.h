@@ -28,15 +28,15 @@ static SDL_Event event;
 static SDL_Texture *rojo;
 static SDL_Texture *azul;
 static SDL_Texture *fondo;
-static user principal;
-static user usuario2;
-static user usuario3;
-static user usuario4;
+static User principal;
+static User usuario2;
+static User usuario3;
+static User usuario4;
 
 
-static user objeto1;
-static user objeto2;
-static user objeto3;
+static Objeto objeto1;
+static Objeto objeto2;
+static Objeto objeto3;
 //The surface contained by the window
 static SDL_Surface* screenSurface = NULL;
 static SDL_Surface *image1 = NULL;

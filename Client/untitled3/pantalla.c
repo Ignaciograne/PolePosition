@@ -6,7 +6,7 @@
 
 void comenzar(){
     //The window we'll be rendering to
-
+    srand(time(NULL));
     //Initialize SDL
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -17,19 +17,15 @@ void comenzar(){
         window = SDL_CreateWindow( "PolePosition", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         screenSurface = SDL_GetWindowSurface(window);
         renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-        usuario3 = inializar(renderer,"images/carroVerde.bmp",3,1, 0);
-        principal = inializar(renderer,"images/carroRojo.bmp",3,1, 1);
-        usuario2 = inializar(renderer,"images/carroAzul.bmp",3,1, 2);
-        usuario4 = inializar(renderer,"images/carroAmarillo.bmp",3,1, 3);
+        usuario3 = crearUsuario(renderer,"images/carroVerde.bmp",0);
+        principal = crearUsuario(renderer,"images/carroRojo.bmp",1);
+        usuario2 = crearUsuario(renderer,"images/carroAzul.bmp",2);
+        usuario4 = crearUsuario(renderer,"images/carroAmarillo.bmp",3);
 
 
-        objeto1 = inializar(renderer,"images/hueco.bmp",1,0, 0);
-        objeto2 = inializar(renderer,"images/vida.bmp",1,0, 0);
-        objeto3 = inializar(renderer,"images/power.bmp",1,0, 0);
-
-        setPosicion(&objeto1,1,-3000);
-        setPosicion(&objeto2,3,-1000);
-        setPosicion(&objeto3,0,100);
+        objeto1 = crearOBjeto(renderer,"images/hueco.bmp",-3000);
+        objeto2 = crearOBjeto(renderer,"images/vida.bmp",-1000);
+        objeto3 = crearOBjeto(renderer,"images/power.bmp",100);
 
         image3 = SDL_LoadBMP("images/fondo.bmp");
         fondo = SDL_CreateTextureFromSurface(renderer,image3);
@@ -64,9 +60,9 @@ void comenzar(){
                 veloc = 0;
                 //printf("Rojo y Azul están a %i: \n" , principal.posicion.y-usuario2.posicion.y);
                 actualizarPosicion(&usuario2, 0, principal.aceleracion-usuario2.aceleracion);
-                actualizarPosicion(&objeto1, 0, principal.aceleracion);
-                actualizarPosicion(&objeto2, 0, principal.aceleracion);
-                actualizarPosicion(&objeto3, 0, principal.aceleracion);
+                actualizarObjeto(&objeto1,1);
+                actualizarObjeto(&objeto2, 1);
+                actualizarObjeto(&objeto3,1);
             }
             if (aceleracion != 0){
                 veloc++;
@@ -103,7 +99,6 @@ void comenzar(){
                                     presion = 0;
                                 }
                             }
-                            cambiarImagen(&principal,1);
                             break;
                         case SDLK_DOWN:
                             presion = presion + 1;
@@ -115,7 +110,6 @@ void comenzar(){
                                     presion = 0;
                                 }
                             }
-                            cambiarImagen(&principal,1);
                             break;
                         case SDLK_SPACE:
                             time(&start);
@@ -148,13 +142,14 @@ void comenzar(){
 
             SDL_RenderClear(renderer);
             SDL_RenderCopy(renderer,fondo,&backround,NULL);
-            renderizar(renderer,&principal);
-            renderizar(renderer,&objeto1);
-            renderizar(renderer,&objeto2);
-            renderizar(renderer,&objeto3);
-            renderizar(renderer,&usuario2);
-            renderizar(renderer,&usuario3);
-            renderizar(renderer,&usuario4);
+
+            renderizarObjeto(renderer,&objeto1);
+            renderizarObjeto(renderer,&objeto2);
+            renderizarObjeto(renderer,&objeto3);
+            renderizarUsuario(renderer,&principal);
+            renderizarUsuario(renderer,&usuario2);
+            renderizarUsuario(renderer,&usuario3);
+            renderizarUsuario(renderer,&usuario4);
 
 
             //SDL_UpdateWindowSurface(window);

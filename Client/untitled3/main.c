@@ -3,8 +3,8 @@
 #include "inicio.h"
 
 int main(int argc, char* args[]) {
-    juego();
-    //comenzar();
+    //juego();
+    comenzar();
     return 0;
 }
 
