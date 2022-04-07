@@ -16,7 +16,7 @@ user inializar(SDL_Renderer *renderer, char *path, int cantidadImagenes, int ima
     temp.cantImagenes = cantidadImagenes;
 
     temp.posicion.w = temp.imagenActual.w -15;
-    temp.posicion.h = temp.imagenActual.h -15;
+    temp.posicion.h = temp.imagenActual.h -15; //arreglar imágenes para que no tenga que restarle 15
     temp.posicion.y = 500;
     temp.posicion.x = 95 * posicionUsuario + 125;
 
@@ -52,7 +52,7 @@ void actualizarPosicion(user * usuario, int x, int y){
     if (x>0){
         cambiarImagen(usuario, 2);
     } else if (x==0){
-        cambiarImagen(usuario, 0);
+        cambiarImagen(usuario, 0); //cambiar a 1
     } else {
         cambiarImagen(usuario,0);
     }

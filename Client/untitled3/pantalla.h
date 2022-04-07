@@ -10,11 +10,10 @@
 #include <stdio.h>
 #include "usuario.h"
 #include "time.h"
+#include "Constantes.h"
 
 void comenzar();
 
-static const int SCREEN_WIDTH = 600;
-static const int SCREEN_HEIGHT = 600;
 static int frame = 0;
 static double seconds;
 static clock_t start;
@@ -31,9 +30,7 @@ static SDL_Texture *azul;
 static SDL_Texture *fondo;
 static user principal;
 static user usuario2;
-
 static user usuario3;
-
 static user usuario4;
 
 

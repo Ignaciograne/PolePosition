@@ -7,11 +7,13 @@
 
 #include "SDL.h"
 #include <stdio.h>
+#include "Constantes.h"
 
 static SDL_Surface *imagen1 = NULL;
 typedef struct {
     int h;
-} imagen;
+} imagen; //hacer estructura de user y obejeto que tengan una imagen
+//hacer colisiones
 
 typedef struct {
     SDL_Texture *textura;
