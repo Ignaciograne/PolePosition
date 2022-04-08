@@ -1,12 +1,11 @@
 # ninja log v5
-6	1421	6710241922735706	CMakeFiles/untitled3.dir/main.c.obj	371e2325fe0fb288
-10	727	6710252803618582	build.ninja	e5491da0603e8ab1
-1324	1717	6710243050913828	untitled3.exe	b0f0781ac97a20cc
-32	1435	6710241922975068	CMakeFiles/untitled3.dir/inicio.c.obj	11fe63c87f20e4d9
-6	1323	6710243047198678	CMakeFiles/untitled3.dir/pantalla.c.obj	74a856019ad69c34
-4	704	6710242196476083	CMakeFiles/untitled3.dir/usuario.c.obj	f1803c9174c2be3a
-5	2133	6710273694000264	CMakeFiles/untitled3.dir/main.c.obj	371e2325fe0fb288
+4	675	6711027415803901	CMakeFiles/untitled3.dir/main.c.obj	371e2325fe0fb288
+10	727	6711032752593755	build.ninja	e5491da0603e8ab1
+158	558	6711029519972501	untitled3.exe	5cd1ed8deefb0330
+69	2145	6710273694080056	CMakeFiles/untitled3.dir/inicio.c.obj	11fe63c87f20e4d9
 60	2139	6710273694020215	CMakeFiles/untitled3.dir/pantalla.c.obj	74a856019ad69c34
 64	2142	6710273693890583	CMakeFiles/untitled3.dir/usuario.c.obj	f1803c9174c2be3a
-69	2145	6710273694080056	CMakeFiles/untitled3.dir/inicio.c.obj	11fe63c87f20e4d9
-2145	2735	6710273700093737	untitled3.exe	b0f0781ac97a20cc
+45	954	6710559199513615	CMakeFiles/untitled3.dir/json/cJSON.c.obj	e6dfbeb808c63af1
+4	158	6711029517030369	CMakeFiles/untitled3.dir/cJSON_Parser.c.obj	1071fa1dbbe5df4c
+33	538	6711041947457822	CMakeFiles/untitled3.dir/cJSON_Parser.c.obj	1071fa1dbbe5df4c
+39	667	6711041948884009	CMakeFiles/untitled3.dir/listaEnlazada.c.obj	7034d14ab7169e56
