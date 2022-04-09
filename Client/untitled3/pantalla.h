@@ -11,6 +11,8 @@
 #include "usuario.h"
 #include "time.h"
 #include "Constantes.h"
+#include "cJSON Parser.h"
+
 
 void comenzar();
 
@@ -32,11 +34,9 @@ static User principal;
 static User usuario2;
 static User usuario3;
 static User usuario4;
+static struct Node * node;
+static struct Node * objetos;
 
-
-static Objeto objeto1;
-static Objeto objeto2;
-static Objeto objeto3;
 //The surface contained by the window
 static SDL_Surface* screenSurface = NULL;
 static SDL_Surface *image1 = NULL;

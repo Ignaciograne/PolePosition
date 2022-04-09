@@ -2,6 +2,7 @@
 // Created by maxta on 1/4/2022.
 //
 
+
 #include "pantalla.h"
 
 void comenzar(){
@@ -22,10 +23,13 @@ void comenzar(){
         usuario2 = crearUsuario(renderer,"images/carroAzul.bmp",2);
         usuario4 = crearUsuario(renderer,"images/carroAmarillo.bmp",3);
 
+        parsear(&objetos,renderer);
+        printList(&objetos);
 
+        /*
         objeto1 = crearOBjeto(renderer,"images/hueco.bmp",-3000);
         objeto2 = crearOBjeto(renderer,"images/vida.bmp",-1000);
-        objeto3 = crearOBjeto(renderer,"images/power.bmp",100);
+        objeto3 = crearOBjeto(renderer,"images/power.bmp",100);*/
 
         image3 = SDL_LoadBMP("images/fondo.bmp");
         fondo = SDL_CreateTextureFromSurface(renderer,image3);
@@ -43,7 +47,6 @@ void comenzar(){
         int presion = 0;
         int pantallas =0;
 
-
         while (!juegoTerminado) {
             time(&stop);
             seconds = difftime(stop, start);
@@ -60,9 +63,15 @@ void comenzar(){
                 veloc = 0;
                 //printf("Rojo y Azul están a %i: \n" , principal.posicion.y-usuario2.posicion.y);
                 actualizarPosicion(&usuario2, 0, principal.aceleracion-usuario2.aceleracion);
-                actualizarObjeto(&objeto1,1);
+                /**node = &objetos;
+                while (node != NULL)
+                {
+                    actualizarObjeto(renderer,&(node->data));
+                    node = node->next;
+                }**/
+                /**actualizarObjeto(&objeto1,1);
                 actualizarObjeto(&objeto2, 1);
-                actualizarObjeto(&objeto3,1);
+                actualizarObjeto(&objeto3,1);**/
             }
             if (aceleracion != 0){
                 veloc++;
@@ -143,9 +152,12 @@ void comenzar(){
             SDL_RenderClear(renderer);
             SDL_RenderCopy(renderer,fondo,&backround,NULL);
 
-            renderizarObjeto(renderer,&objeto1);
-            renderizarObjeto(renderer,&objeto2);
-            renderizarObjeto(renderer,&objeto3);
+            node =  &objetos;
+            while (node != NULL)
+            {
+                renderizarObjeto(renderer,&node->data);
+                node = node->next;
+            }
             renderizarUsuario(renderer,&principal);
             renderizarUsuario(renderer,&usuario2);
             renderizarUsuario(renderer,&usuario3);

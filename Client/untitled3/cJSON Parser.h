@@ -7,10 +7,14 @@
 
 #include "json/cJSON.h"
 #include <stdio.h>
+#include "listaEnlazada.h"
+#include "Constantes.h"
 
 
-void parsear(), getObjetos(cJSON * lista);
+void parsear(struct Node *lista, SDL_Renderer *renderer);
+void getObjetos(cJSON * lista, struct Node *linked, char *path, SDL_Renderer *renderer);
 char * crearJSON();
-cJSON * crearObjeto (int posicion, int vida, int puntos);
+cJSON * crearObjeto1 (int posicion, int vida, int puntos);
+
 
 #endif //UNTITLED3_CJSON_PARSER_H

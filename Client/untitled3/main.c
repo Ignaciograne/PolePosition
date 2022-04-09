@@ -6,10 +6,16 @@
 
 int main(int argc, char* args[]) {
     //juego();
-    //comenzar();
-    //parsear();
+    comenzar();
+    /**
+    struct Node * objetos = NULL;
+    parsear(&objetos);
+    printf("\n\n");
+    printList(&objetos);**/
     //crearJSON();
-    create();
+    //create();
+
     return 0;
 }
+
 

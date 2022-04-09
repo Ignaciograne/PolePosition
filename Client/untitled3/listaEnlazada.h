@@ -7,6 +7,9 @@
 
 #include<stdlib.h>
 #include <stdio.h>
+#include<stdlib.h>
+#include <stdio.h>
+#include "usuario.h"
 
 void create();
 void display();
@@ -17,11 +20,17 @@ void delete_begin();
 void delete_end();
 void delete_pos();
 
-struct node
+struct Node
 {
-    int info;
-    struct node *next;
+    Objeto data;
+    struct Node *next;
 };
-struct node *start=NULL;
+
+//Lista crearLista();
+//display the list
+void printList(struct Node *node);
+
+//void insertFirst (Lista *l, int dato);
+void append(struct Node** head_ref, Objeto new_data);
 
 #endif //UNTITLED3_LISTAENLAZADA_H
