@@ -11,7 +11,7 @@
 #include "Constantes.h"
 
 
-void parsear(struct Node *lista, SDL_Renderer *renderer);
+struct Node * parsear(struct Node *lista, SDL_Renderer *renderer);
 void getObjetos(cJSON * lista, struct Node *linked, char *path, SDL_Renderer *renderer);
 char * crearJSON();
 cJSON * crearObjeto1 (int posicion, int vida, int puntos);

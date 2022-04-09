@@ -3,7 +3,7 @@
 //
 
 #include "cJSON Parser.h"
-void parsear(struct Node *lista, SDL_Renderer *renderer){
+struct Node * parsear(struct Node *lista, SDL_Renderer *renderer){
     cJSON *parsed = NULL;
     parsed = cJSON_Parse(crearJSON());
     cJSON * turbos = NULL;
@@ -18,6 +18,7 @@ void parsear(struct Node *lista, SDL_Renderer *renderer){
     getObjetos(huecos, lista, "images/hueco.bmp",renderer);
     printf("Objetos de JSON\n");
     printList(lista);
+    return lista;
     /**
     printf("Huecos ");
     getObjetos(huecos, head_ref);
@@ -77,8 +78,15 @@ char * crearJSON(){
 
     cJSON_AddItemToArray(huecos, crearObjeto(300,0,2));
 
-    cJSON_AddItemToArray(vidas, crearObjeto(400,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(-300,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(450,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(-350,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(150,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(-350,0,2));
+
+    cJSON_AddItemToArray(vidas, crearObjeto(1450,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(-1350,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(1150,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto(-1350,0,2));
 
 
     cJSON_AddItemToObject(informe, "turbo", turbos);

@@ -35,7 +35,6 @@ static User usuario2;
 static User usuario3;
 static User usuario4;
 static struct Node * node;
-static struct Node * objetos;
 
 //The surface contained by the window
 static SDL_Surface* screenSurface = NULL;

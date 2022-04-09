@@ -23,7 +23,9 @@ void comenzar(){
         usuario2 = crearUsuario(renderer,"images/carroAzul.bmp",2);
         usuario4 = crearUsuario(renderer,"images/carroAmarillo.bmp",3);
 
-        parsear(&objetos,renderer);
+        static struct Node * objetos;
+        objetos = parsear(&objetos,renderer);
+        printf("Impreso desde la pantalla: ");
         printList(&objetos);
 
         /*
@@ -63,12 +65,12 @@ void comenzar(){
                 veloc = 0;
                 //printf("Rojo y Azul están a %i: \n" , principal.posicion.y-usuario2.posicion.y);
                 actualizarPosicion(&usuario2, 0, principal.aceleracion-usuario2.aceleracion);
-                /**node = &objetos;
+                node = &objetos;
                 while (node != NULL)
                 {
-                    actualizarObjeto(renderer,&(node->data));
+                    actualizarObjeto(&(node->data),1);
                     node = node->next;
-                }**/
+                }
                 /**actualizarObjeto(&objeto1,1);
                 actualizarObjeto(&objeto2, 1);
                 actualizarObjeto(&objeto3,1);**/
@@ -151,6 +153,7 @@ void comenzar(){
 
             SDL_RenderClear(renderer);
             SDL_RenderCopy(renderer,fondo,&backround,NULL);
+
 
             node =  &objetos;
             while (node != NULL)
