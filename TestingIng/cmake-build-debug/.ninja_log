@@ -1,0 +1,6 @@
+# ninja log v5
+4	2197	6712495127806247	CMakeFiles/TestingIng.dir/client.c.obj	56179b83e130edba
+6	135	6712488142017494	CMakeFiles/TestingIng.dir/clientUpdate.c.obj	507209e9830189f5
+5	628	6712495631667989	TestingIng.exe	a2e0e220c920ceb
+3	1331	6712496113749483	CMakeFiles/TestingIng.dir/client.c.obj	56179b83e130edba
+1333	1557	6712496116031869	TestingIng.exe	a2e0e220c920ceb

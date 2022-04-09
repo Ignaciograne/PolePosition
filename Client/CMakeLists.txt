@@ -1,0 +1,113 @@
+cmake_minimum_required(VERSION 3.21)
+project(Client C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(untitled3)
+include_directories(untitled3/json)
+include_directories(untitled3/SDL2-2.0.20)
+include_directories(untitled3/SDL2-2.0.20/include)
+
+add_executable(Client
+        untitled3/json/cJSON.c
+        untitled3/json/cJSON.h
+        untitled3/SDL2-2.0.20/include/begin_code.h
+        untitled3/SDL2-2.0.20/include/close_code.h
+        untitled3/SDL2-2.0.20/include/SDL.h
+        untitled3/SDL2-2.0.20/include/SDL_assert.h
+        untitled3/SDL2-2.0.20/include/SDL_atomic.h
+        untitled3/SDL2-2.0.20/include/SDL_audio.h
+        untitled3/SDL2-2.0.20/include/SDL_bits.h
+        untitled3/SDL2-2.0.20/include/SDL_blendmode.h
+        untitled3/SDL2-2.0.20/include/SDL_clipboard.h
+        untitled3/SDL2-2.0.20/include/SDL_config.h
+        untitled3/SDL2-2.0.20/include/SDL_config_android.h
+        untitled3/SDL2-2.0.20/include/SDL_config_iphoneos.h
+        untitled3/SDL2-2.0.20/include/SDL_config_macosx.h
+        untitled3/SDL2-2.0.20/include/SDL_config_minimal.h
+        untitled3/SDL2-2.0.20/include/SDL_config_pandora.h
+        untitled3/SDL2-2.0.20/include/SDL_config_psp.h
+        untitled3/SDL2-2.0.20/include/SDL_config_windows.h
+        untitled3/SDL2-2.0.20/include/SDL_config_winrt.h
+        untitled3/SDL2-2.0.20/include/SDL_config_wiz.h
+        untitled3/SDL2-2.0.20/include/SDL_copying.h
+        untitled3/SDL2-2.0.20/include/SDL_cpuinfo.h
+        untitled3/SDL2-2.0.20/include/SDL_egl.h
+        untitled3/SDL2-2.0.20/include/SDL_endian.h
+        untitled3/SDL2-2.0.20/include/SDL_error.h
+        untitled3/SDL2-2.0.20/include/SDL_events.h
+        untitled3/SDL2-2.0.20/include/SDL_filesystem.h
+        untitled3/SDL2-2.0.20/include/SDL_gamecontroller.h
+        untitled3/SDL2-2.0.20/include/SDL_gesture.h
+        untitled3/SDL2-2.0.20/include/SDL_haptic.h
+        untitled3/SDL2-2.0.20/include/SDL_hidapi.h
+        untitled3/SDL2-2.0.20/include/SDL_hints.h
+        untitled3/SDL2-2.0.20/include/SDL_joystick.h
+        untitled3/SDL2-2.0.20/include/SDL_keyboard.h
+        untitled3/SDL2-2.0.20/include/SDL_keycode.h
+        untitled3/SDL2-2.0.20/include/SDL_loadso.h
+        untitled3/SDL2-2.0.20/include/SDL_locale.h
+        untitled3/SDL2-2.0.20/include/SDL_log.h
+        untitled3/SDL2-2.0.20/include/SDL_main.h
+        untitled3/SDL2-2.0.20/include/SDL_messagebox.h
+        untitled3/SDL2-2.0.20/include/SDL_metal.h
+        untitled3/SDL2-2.0.20/include/SDL_misc.h
+        untitled3/SDL2-2.0.20/include/SDL_mouse.h
+        untitled3/SDL2-2.0.20/include/SDL_mutex.h
+        untitled3/SDL2-2.0.20/include/SDL_name.h
+        untitled3/SDL2-2.0.20/include/SDL_opengl.h
+        untitled3/SDL2-2.0.20/include/SDL_opengl_glext.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles2.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles2_gl2.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles2_gl2ext.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles2_gl2platform.h
+        untitled3/SDL2-2.0.20/include/SDL_opengles2_khrplatform.h
+        untitled3/SDL2-2.0.20/include/SDL_pixels.h
+        untitled3/SDL2-2.0.20/include/SDL_platform.h
+        untitled3/SDL2-2.0.20/include/SDL_power.h
+        untitled3/SDL2-2.0.20/include/SDL_quit.h
+        untitled3/SDL2-2.0.20/include/SDL_rect.h
+        untitled3/SDL2-2.0.20/include/SDL_render.h
+        untitled3/SDL2-2.0.20/include/SDL_revision.h
+        untitled3/SDL2-2.0.20/include/SDL_rwops.h
+        untitled3/SDL2-2.0.20/include/SDL_scancode.h
+        untitled3/SDL2-2.0.20/include/SDL_sensor.h
+        untitled3/SDL2-2.0.20/include/SDL_shape.h
+        untitled3/SDL2-2.0.20/include/SDL_stdinc.h
+        untitled3/SDL2-2.0.20/include/SDL_surface.h
+        untitled3/SDL2-2.0.20/include/SDL_system.h
+        untitled3/SDL2-2.0.20/include/SDL_syswm.h
+        untitled3/SDL2-2.0.20/include/SDL_test.h
+        untitled3/SDL2-2.0.20/include/SDL_test_assert.h
+        untitled3/SDL2-2.0.20/include/SDL_test_common.h
+        untitled3/SDL2-2.0.20/include/SDL_test_compare.h
+        untitled3/SDL2-2.0.20/include/SDL_test_crc32.h
+        untitled3/SDL2-2.0.20/include/SDL_test_font.h
+        untitled3/SDL2-2.0.20/include/SDL_test_fuzzer.h
+        untitled3/SDL2-2.0.20/include/SDL_test_harness.h
+        untitled3/SDL2-2.0.20/include/SDL_test_images.h
+        untitled3/SDL2-2.0.20/include/SDL_test_log.h
+        untitled3/SDL2-2.0.20/include/SDL_test_md5.h
+        untitled3/SDL2-2.0.20/include/SDL_test_memory.h
+        untitled3/SDL2-2.0.20/include/SDL_test_random.h
+        untitled3/SDL2-2.0.20/include/SDL_thread.h
+        untitled3/SDL2-2.0.20/include/SDL_timer.h
+        untitled3/SDL2-2.0.20/include/SDL_touch.h
+        untitled3/SDL2-2.0.20/include/SDL_types.h
+        untitled3/SDL2-2.0.20/include/SDL_version.h
+        untitled3/SDL2-2.0.20/include/SDL_video.h
+        untitled3/SDL2-2.0.20/include/SDL_vulkan.h
+        "untitled3/cJSON Parser.c"
+        "untitled3/cJSON Parser.h"
+        untitled3/Constantes.h
+        untitled3/inicio.c
+        untitled3/inicio.h
+        untitled3/listaEnlazada.c
+        untitled3/listaEnlazada.h
+        untitled3/main.c
+        untitled3/pantalla.c
+        untitled3/pantalla.h
+        untitled3/usuario.c
+        untitled3/usuario.h
+        gui.c)
