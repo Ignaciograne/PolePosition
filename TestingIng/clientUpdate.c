@@ -52,23 +52,35 @@ int main(int argc, char *argv[]) {
     printf("Connected to Server.\n");
 
     //Read
-    while(fgets(buffer, sizeof(buffer), stdin)){    //read line by line of the input file
+   // while(fgets(buffer, sizeof(buffer), stdin)){    //read line by line of the input file
+    while(1){    //read line by line of the input file
             char reply[BUF_SIZE]={0};
             char repList[20][BUF_SIZE]={0};
             int count=0;
             int ret=1;
+
+	    ret=recv(clientSocket, &reply[count],sizeof(reply)-count,0);
+            count+=ret;
+            printf("%s", reply);
+            if( ret < 0 ) {
+                printf("Error in receiving data.\n");
+	    }
+
+	    fgets(buffer, sizeof(buffer), stdin);
             printf("You typed: %s", buffer);
 
 
             // Send data to the server
             send(clientSocket, buffer, strlen(buffer), 0);
             // Receive json back from the server
-            ret=recv(clientSocket, &reply[count],sizeof(reply)-count,0);
+            /*
+	    ret=recv(clientSocket, &reply[count],sizeof(reply)-count,0);
             count+=ret;
 	    printf("%s", reply);
             if( ret < 0 ) {
                 printf("Error in receiving data.\n");
             }
+	    */
             printf("\n");
         }
     return 0;

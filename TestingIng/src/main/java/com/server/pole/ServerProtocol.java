@@ -5,9 +5,10 @@ import org.json.JSONObject;
 import java.util.*;
 
 public class ServerProtocol {
-    private static final int SELECTCAR = 0;
-    private static final int SENTKNOCKKNOCK = 1;
-    private static final int SENTCLUE = 2;
+	private static final int AVAILABLECARS = 0;
+	private static final int SELECTCAR = 1;
+    
+    private static final int DEFINEOBJECTS = 2;
     private static final int ANOTHER = 3;
     
     private static String[] carColors = {"azul", "blanco", "morado", "rojo"};
@@ -16,15 +17,15 @@ public class ServerProtocol {
     private static final int NUMJOKES = 5;
 
     //private int state = SELECTCAR;
-    private int state = SELECTCAR;
-    private int currentJoke = 0;
-
-    private String[] clues = { "Turnip", "Little Old Lady", "Atch", "Who", "Who" };
-    private String[] answers = { "Turnip the heat, it's cold in here!",
-                                 "I didn't know you could yodel!",
-                                 "Bless you!",
-                                 "Is there an owl in here?",
-                                 "Is there an echo in here?" };
+    private int state = AVAILABLECARS;
+    
+    private static JSONObject carsAvailable = new JSONObject()
+    		.put("Azul", 1)
+    		.put("Blanco", 1)
+    		.put("Morado", 1)
+    		.put("Rojo", 1);
+    
+    
 
     GameObjectsFactory objectsFactory = new GameObjectsFactory();
     //GameObject gameObject;
@@ -32,18 +33,26 @@ public class ServerProtocol {
     public JSONObject processInput(JSONObject theInput) {
         JSONObject theOutput = new JSONObject();
 
-        if (state == SELECTCAR) {
+        if (state == AVAILABLECARS) {
+        	theOutput = carsAvailable; 
             //theOutput = "Hola! Por favor ingrese los obstaculos deseados";
             //state = SENTKNOCKKNOCK;
-        	state = SENTCLUE;
-        }/* else if (state == SENTKNOCKKNOCK) {
-            if (valid.contains(theInput)) {
-                //theOutput = "You selected " + theInput;
-                //state = SENTCLUE;
+        	state = SELECTCAR;
+        } else if (state == SELECTCAR) {
+        	Iterator<String> maKeys = theInput.keys();
+        	String maKey = maKeys.next();
+            if (carsAvailable.has(maKey) && Integer.parseInt(carsAvailable.get(maKey).toString().replace("\n", "")) == 1) {
+            	System.out.println("Todo bien");
+            	carsAvailable.put(""+maKey, 0);
+            	theOutput = carsAvailable;
+                
+                state = DEFINEOBJECTS;
             } else {
-                //theOutput = theInput + " not a valid color yo";
+            	System.out.println("Nopo nopo bitcho nopo");
+                theOutput = carsAvailable;
             }
-        }*/ else if (state == SENTCLUE) {
+            System.out.println("Mira putito: " + carsAvailable);
+        } else if (state == DEFINEOBJECTS) {
         		Iterator<String> keys = theInput.keys();
         	
         		JSONArray turboAr = new JSONArray();
@@ -82,7 +91,7 @@ public class ServerProtocol {
 	        	
 	        	theOutput.put("Turbo", turboAr);
 	        	theOutput.put("Hole", holeAr);
-	        	theOutput.put("Life", lifeAr);
+	        	theOutput.put("Li)fe", lifeAr);
         	
         	
         	

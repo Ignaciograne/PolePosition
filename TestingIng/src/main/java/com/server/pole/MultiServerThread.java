@@ -26,8 +26,10 @@ public class MultiServerThread extends Thread {
             String inputLine;//, outputLine;
             JSONObject outputLine;
             ServerProtocol kkp = new ServerProtocol();
-            //outputLine = kkp.processInput(null);
-            //out.println(outputLine);
+            //out.println("Seleccione su color: ");
+            JSONObject nuller = new JSONObject("{1:2}");
+            outputLine = kkp.processInput(nuller);
+            out.println(outputLine);
             
             //inputLine = in.readLine();
             //JSONObject obj = new JSONObject(inputLine.trim());
