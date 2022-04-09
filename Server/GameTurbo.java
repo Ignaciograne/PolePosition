@@ -1,6 +1,8 @@
 public class GameTurbo extends GameObjects {
 
-        public GameTurbo(int position, int health, int points){
-		super(position, health, points);
+        public GameTurbo(int position){
+		setPosition(position);
+                setHealth(0);
+                setPoints(2);
         }
 }

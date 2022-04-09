@@ -1,6 +1,8 @@
 public class GameHole extends GameObjects {
 
-        public GameHole(int position, int health, int points){
-		super(position, health, points);
+        public GameHole(int position){
+		setPosition(position);
+		setHealth(0);
+		setPoints(0);
         }
 }
