@@ -1,6 +1,8 @@
 public class GameLife extends GameObjects {
 	
-	public GameLife(int position, int health, int points){
-		super(position, health, points);
+	public GameLife(int position){
+		setPosition(position);
+                setHealth(1);
+                setPoints(3);
 	}
 } 
