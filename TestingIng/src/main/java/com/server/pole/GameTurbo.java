@@ -6,5 +6,6 @@ public class GameTurbo extends GameObject {
             setPosition(position);
             setHealth(0);
             setPoints(2);
+            setAcceleration(9);
     }
 }

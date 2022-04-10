@@ -6,5 +6,6 @@ public class GameLife extends GameObject {
             setPosition(position);
             setHealth(1);
             setPoints(3);
+            setAcceleration(0);
     }
 }

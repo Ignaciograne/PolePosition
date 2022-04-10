@@ -4,6 +4,7 @@ public class GameObject {
     private int position;
     private int health;
     private int points;
+    private int acceleration;
 
     //Position
     public void setPosition(int position){
@@ -29,5 +30,13 @@ public class GameObject {
     }
     public int getPoints(){
             return points;
+    }
+    
+    //Acceleration
+    public void setAcceleration(int acceleration){
+            this.acceleration = acceleration;
+    }
+    public int getAcceleration(){
+            return acceleration;
     }
 }

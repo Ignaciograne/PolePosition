@@ -6,5 +6,6 @@ public class GameHole extends GameObject {
             setPosition(position);
             setHealth(0);
             setPoints(0);
+            setAcceleration(-9);
     }
 }
