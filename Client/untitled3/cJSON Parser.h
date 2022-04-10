@@ -12,8 +12,10 @@
 
 
 struct Node * parsear(struct Node *lista, SDL_Renderer *renderer);
+struct NodeU * parsearUsuarios(struct NodeU *linked, SDL_Renderer *renderer);
 void getObjetos(cJSON * lista, struct Node *linked, char *path, SDL_Renderer *renderer);
 char * crearJSON();
+char * crearJSonUsuarios();
 cJSON * crearObjeto1 (int posicion, int vida, int puntos, int aceleracion);
 
 

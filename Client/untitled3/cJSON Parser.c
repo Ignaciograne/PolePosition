@@ -19,6 +19,34 @@ struct Node * parsear(struct Node *lista, SDL_Renderer *renderer){
     printf("Objetos de JSON\n");
     printList(lista);
     return lista;
+}
+
+struct NodeU * parsearUsuarios(struct NodeU *linked, SDL_Renderer *renderer){
+    cJSON *parsed = NULL;
+    parsed = cJSON_Parse(crearJSonUsuarios());
+    printf("Rojo %d\n\n", cJSON_GetObjectItem(parsed, "Rojo")->valueint);
+    if (!cJSON_GetObjectItem(parsed, "Rojo")->valueint){
+        User ob = crearUsuario(renderer,"images/carroRojo.bmp",1);
+        appendU(&linked, ob);
+    }
+    printf("Morado %d\n\n", cJSON_GetObjectItem(parsed, "Morado")->valueint);
+    if (!cJSON_GetObjectItem(parsed, "Morado")->valueint){
+        User ob = crearUsuario(renderer,"images/carroVerde.bmp",0);
+        appendU(&linked, ob);
+    }
+    printf("Blanco %d\n\n", cJSON_GetObjectItem(parsed, "Blanco")->valueint);
+    if (!cJSON_GetObjectItem(parsed, "Blanco")->valueint){
+        User ob = crearUsuario(renderer,"images/carroAmarillo.bmp",2);
+        appendU(&linked, ob);
+    }
+    printf("Azul %d\n\n", cJSON_GetObjectItem(parsed, "Azul")->valueint);
+    if (!cJSON_GetObjectItem(parsed, "Azul")->valueint){
+        User ob = crearUsuario(renderer,"images/carroAzul.bmp",3);
+        appendU(&linked, ob);
+    }
+    printf("Usuarios de JSON: \n");
+    printListU(linked);
+    return linked;
     /**
     printf("Huecos ");
     getObjetos(huecos, head_ref);
@@ -57,6 +85,21 @@ cJSON * crearObjeto1 (int posicion, int vida, int puntos, int aceleracion){
     cJSON_AddNumberToObject(objeto, "aceleration", aceleracion);
 
     return objeto;
+}
+
+char * crearJSonUsuarios(){
+    cJSON *informe = NULL;
+    informe = cJSON_CreateObject();
+    char *str = NULL;
+
+    cJSON_AddNumberToObject(informe, "Rojo", 0);
+    cJSON_AddNumberToObject(informe, "Morado", 0);
+    cJSON_AddNumberToObject(informe, "Blanco", 1);
+    cJSON_AddNumberToObject(informe, "Azul", 0);
+
+    str = cJSON_Print(informe);
+    printf("%s\n", str);
+    return str;
 }
 
 char * crearJSON(){

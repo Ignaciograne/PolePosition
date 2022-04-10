@@ -33,18 +33,15 @@ void append(struct Node** head_ref, Objeto new_data){
     if (*head_ref == NULL)
     {
         *head_ref = new_node;
-        printf("Anadido el principio (%d,%d): \n", (*head_ref)->data.posicion.x,(*head_ref)->data.posicion.y );
         return;
     }
 
     /* 5. Else traverse till the last node */
     while (last->next != NULL){
-        printf("posicion x en (%d,%d): \n", last->data.posicion.x,last->data.posicion.y );
         last = last->next;}
 
     /* 6. Change the next of last node */
     last->next = new_node;
-    printf("Anadido el (%d,%d): \n", last->next->data.posicion.x,last->next->data.posicion.y );
 }
 
 void deleteNode(struct Node** head_ref, Objeto * obj)

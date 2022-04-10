@@ -35,10 +35,8 @@ static SDL_Texture *rojo;
 static SDL_Texture *azul;
 static SDL_Texture *fondo;
 static User principal;
-static User usuario2;
-static User usuario3;
-static User usuario4;
 static struct Node * node;
+static struct NodeU * nodeU;
 
 //The surface contained by the window
 static SDL_Surface* screenSurface = NULL;

@@ -18,20 +18,25 @@ void comenzar(){
         window = SDL_CreateWindow( "PolePosition", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         screenSurface = SDL_GetWindowSurface(window);
         renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-        usuario3 = crearUsuario(renderer,"images/carroVerde.bmp",0);
         principal = crearUsuario(renderer,"images/carroRojo.bmp",1);
-        usuario2 = crearUsuario(renderer,"images/carroAzul.bmp",2);
-        usuario4 = crearUsuario(renderer,"images/carroAmarillo.bmp",3);
 
         static struct Node * objetos;
         objetos = parsear(&objetos,renderer);
-        printf("Impreso desde la pantalla: ");
-        printList(&objetos);
 
-        /*
-        objeto1 = crearOBjeto(renderer,"images/hueco.bmp",-3000);
-        objeto2 = crearOBjeto(renderer,"images/vida.bmp",-1000);
-        objeto3 = crearOBjeto(renderer,"images/power.bmp",100);*/
+        static struct NodeU * usuarios;
+        parsearUsuarios(&usuarios,renderer);
+
+        nodeU = &usuarios;
+        /**int prin = 2;
+        int i = 0;
+        while (nodeU !=NULL){
+            if(i == prin+1){
+                principal = nodeU->data;
+                deleteNodeU(&usuarios,&nodeU->data);
+            }
+            i++;
+            nodeU = nodeU->next;
+        }**/
 
         image3 = SDL_LoadBMP("images/fondo.bmp");
         fondo = SDL_CreateTextureFromSurface(renderer,image3);
@@ -82,7 +87,12 @@ void comenzar(){
                     printf("Súper power up: %i \n", principal.aceleracion);
                     power = 1;
                 }
-                actualizarPosicion(&usuario2, 0, principal.aceleracion-usuario2.aceleracion);
+                while (nodeU !=NULL && node->data.aceleracion!=0){
+                    actualizarPosicion(&nodeU->data, 0, principal.aceleracion-nodeU->data.aceleracion);
+                    printf("aceleracion %d\n",principal.aceleracion-nodeU->data.aceleracion);
+                    nodeU = nodeU->next;
+                }
+                //printf("--- \n\n");
                 node = &objetos;
                 while (node != NULL)
                 {
@@ -107,8 +117,14 @@ void comenzar(){
                             actualizarPosicion(&principal,-10,0);
                             break;
                         case SDLK_a:
-                            if (usuario2.aceleracion < 6){
-                                usuario2.aceleracion +=1;
+                            nodeU = &usuarios;
+                            while (nodeU !=NULL){
+                                if(nodeU->data.aceleracion < 6){
+                                    nodeU->data.aceleracion++;
+                                }
+
+                                printf("aceleracion: %d\n\n",nodeU->data.aceleracion);
+                                nodeU = nodeU->next;
                             }
                             break;
                         case SDLK_UP:
@@ -173,9 +189,13 @@ void comenzar(){
                 node = node->next;
             }
             renderizarUsuario(renderer,&principal);
-            renderizarUsuario(renderer,&usuario2);
-            renderizarUsuario(renderer,&usuario3);
-            renderizarUsuario(renderer,&usuario4);
+
+            nodeU = &usuarios;
+            while (nodeU !=NULL){
+                renderizarUsuario(renderer,&nodeU->data);
+                actualizarPosicion(&nodeU->data, 0, principal.aceleracion-nodeU->data.aceleracion);
+                nodeU = nodeU->next;
+            }
 
 
             //SDL_UpdateWindowSurface(window);
