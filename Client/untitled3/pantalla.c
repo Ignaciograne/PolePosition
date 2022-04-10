@@ -44,18 +44,31 @@ void comenzar(){
         backround.h=600;
 
         int veloc = 0;
-        time(&start);
+        time(&startPower);
+
         int presion = 0;
         int pantallas =0;
 
         while (!juegoTerminado) {
+
             time(&stop);
-            seconds = difftime(stop, start);
+            seconds = difftime(stop, startPower);
             //printf("time %.5f\n",seconds);
-            if (seconds == 3 && power){
+
+            time(&stopPower);
+            secondsPower = difftime(stopPower, startPower);
+            //printf("time %.5f\n",secondsPower);
+
+            //printf("time %.5f\n",seconds);
+            if (secondsPower == 3 && power){
                 principal.aceleracion = 6;
                 power = 0;
                 printf("Se quita el power \n");
+            }
+            if (seconds == 10){
+                principal.puntaje = principal.puntaje + 10;
+                printf("Puntaje Subido a: %d por tiempo.\n", principal.puntaje);
+                time(&startPower);
             }
             backround.y = frame ;
             if (veloc>(10-principal.aceleracion)){
@@ -64,7 +77,7 @@ void comenzar(){
                 //printf("Rojo y Azul están a %i: \n" , principal.posicion.y-usuario2.posicion.y);
                 colisionObjetos(&principal,&objetos);
                 if (principal.aceleracion==9 && !power){
-                    time(&start);
+                    time(&startPower);
                     principal.aceleracion=9;
                     printf("Súper power up: %i \n", principal.aceleracion);
                     power = 1;
@@ -122,7 +135,7 @@ void comenzar(){
                             }
                             break;
                         case SDLK_SPACE:
-                            time(&start);
+                            time(&startPower);
                             principal.aceleracion=9;
                             printf("Súper power up: %i \n", principal.aceleracion);
                             power = 1;

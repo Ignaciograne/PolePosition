@@ -39,20 +39,22 @@ void getObjetos(cJSON * lista, struct Node *linked, char *path, SDL_Renderer *re
         printf("health: %i \n", cJSON_GetObjectItem(item,"health")->valueint);
         printf("puntos: %i \n", cJSON_GetObjectItem(item,"points")->valueint);
         int p = cJSON_GetObjectItem(item,"position")->valueint;
-        int h = cJSON_GetObjectItem(item,"health")->valueint;
+        int v = cJSON_GetObjectItem(item,"health")->valueint;
         int pp = cJSON_GetObjectItem(item,"points")->valueint;
-        Objeto ob = crearOBjeto(renderer, path, p, h);
+        int ace = cJSON_GetObjectItem(item,"aceleration")->valueint;
+        Objeto ob = crearOBjeto(renderer, path, p, ace,v,pp);
         append(&linked, ob);
     }
 }
 
-cJSON * crearObjeto (int posicion, int vida, int puntos){
+cJSON * crearObjeto1 (int posicion, int vida, int puntos, int aceleracion){
     cJSON * objeto;
     objeto = cJSON_CreateObject();
 
     cJSON_AddNumberToObject(objeto, "position", posicion);
     cJSON_AddNumberToObject(objeto, "health", vida);
     cJSON_AddNumberToObject(objeto, "points", puntos);
+    cJSON_AddNumberToObject(objeto, "aceleration", aceleracion);
 
     return objeto;
 }
@@ -70,23 +72,23 @@ char * crearJSON(){
     turbos = cJSON_CreateArray();
     huecos = cJSON_CreateArray();
     vidas = cJSON_CreateArray();
-    cJSON_AddItemToArray(turbos, crearObjeto(100,9,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(-200,9,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(-1000,9,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(400,9,2));
+    cJSON_AddItemToArray(turbos, crearObjeto1(100,0,2,9));
+    cJSON_AddItemToArray(turbos, crearObjeto1(-200,0,2,9));
+    cJSON_AddItemToArray(turbos, crearObjeto1(-1000,0,2,9));
+    cJSON_AddItemToArray(turbos, crearObjeto1(400,0,2,9));
 
 
-    cJSON_AddItemToArray(huecos, crearObjeto(300,-9,2));
+    cJSON_AddItemToArray(huecos, crearObjeto1(300,0,0,-9));
 
-    cJSON_AddItemToArray(vidas, crearObjeto(450,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(-350,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(150,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(-350,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto1(450,0,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-350,0,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(150,0,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-350,0,2,0));
 
-    cJSON_AddItemToArray(vidas, crearObjeto(1450,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(-1350,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(1150,0,2));
-    cJSON_AddItemToArray(vidas, crearObjeto(-1350,0,2));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-1450,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-1550,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-1650,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-1350,1,2,0));
 
 
     cJSON_AddItemToObject(informe, "turbo", turbos);

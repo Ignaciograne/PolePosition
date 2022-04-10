@@ -25,6 +25,7 @@ typedef struct {
     Imagen imagenUsuario;
     int aceleracion;
     int vidas;
+    int puntaje;
 } User; //hacer estructura de user y obejeto que tengan una imagen
 //hacer colisiones
 
@@ -38,7 +39,7 @@ typedef struct {
 
 static int num;
 User crearUsuario(SDL_Renderer *renderer, char *path, int posicion);
-Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace);
+Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace, int vida, int puntos);
 
 Imagen crearImagen(SDL_Renderer *renderer, char *path, int cantidadImagenes, int imagenInicial);
 void cambiarImagen(Imagen * img, int imagen);

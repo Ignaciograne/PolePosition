@@ -27,6 +27,13 @@ struct Node
     struct Node *next;
 };
 
+struct NodeU
+{
+    User data;
+    struct NodeU *next;
+};
+
+
 //Lista crearLista();
 //display the list
 static struct Node * node;
@@ -34,6 +41,15 @@ void printList(struct Node *node);
 
 //void insertFirst (Lista *l, int dato);
 void append(struct Node** head_ref, Objeto new_data);
+void deleteNode(struct Node** head_ref, Objeto * obj);
 void colisionObjetos(User * usuario, struct Node *objetos);
+
+
+static struct NodeU * nodeU;
+void printListU(struct NodeU *nodeU);
+
+void appendU(struct NodeU** head_ref, User new_data);
+void deleteNodeU(struct NodeU** head_ref, User * usi);
+//void colisionObjetosU(User * usuario, struct Node *objetos);
 
 #endif //UNTITLED3_LISTAENLAZADA_H

@@ -18,7 +18,11 @@ void comenzar();
 
 static int frame = 0;
 static double seconds;
-static clock_t start;
+static double secondsPower;
+static clock_t startPower;
+static clock_t stopPower;
+
+//static clock_t start;
 static clock_t stop;
 
 static int juegoTerminado;

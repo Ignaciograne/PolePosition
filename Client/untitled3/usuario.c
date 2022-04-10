@@ -31,10 +31,12 @@ User crearUsuario(SDL_Renderer *renderer, char *path, int posicion){
     usuario.posicion.x = 95 * posicion + 125;
 
     usuario.aceleracion = 0;
+    usuario.vidas =3;
+    usuario.puntaje = 0;
 
     return usuario;
 }
-Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace){
+Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace, int vida, int puntos){
     Objeto obj;
     obj.imagenObjeto = crearImagen(renderer,path,1,0);//cambiar a 2
     obj.posicion.w = obj.imagenObjeto.imagenActual.w;
@@ -45,6 +47,8 @@ Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace){
     obj.posicion.y = metros;
 
     obj.aceleracion = ace;
+    obj.vida = vida;
+    obj.puntos = puntos;
 
     return obj;
 }
