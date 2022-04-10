@@ -6,7 +6,7 @@
 
 int main(int argc, char* args[]) {
     //juego();
-    comenzar();
+    comenzar(1);
     /**
     struct Node * objetos = NULL;
     parsear(&objetos);

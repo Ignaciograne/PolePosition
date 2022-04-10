@@ -47,7 +47,6 @@ void colisionObjetos(User * usuario, struct Node *objetos);
 
 static struct NodeU * nodeU;
 void printListU(struct NodeU *nodeU);
-
 void appendU(struct NodeU** head_ref, User new_data);
 void deleteNodeU(struct NodeU** head_ref, User * usi);
 //void colisionObjetosU(User * usuario, struct Node *objetos);

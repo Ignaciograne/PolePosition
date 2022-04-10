@@ -93,7 +93,7 @@ char * crearJSonUsuarios(){
     char *str = NULL;
 
     cJSON_AddNumberToObject(informe, "Rojo", 0);
-    cJSON_AddNumberToObject(informe, "Morado", 0);
+    cJSON_AddNumberToObject(informe, "Morado", 1);
     cJSON_AddNumberToObject(informe, "Blanco", 1);
     cJSON_AddNumberToObject(informe, "Azul", 0);
 
@@ -123,10 +123,10 @@ char * crearJSON(){
 
     cJSON_AddItemToArray(huecos, crearObjeto1(300,0,0,-9));
 
-    cJSON_AddItemToArray(vidas, crearObjeto1(450,0,2,0));
-    cJSON_AddItemToArray(vidas, crearObjeto1(-350,0,2,0));
-    cJSON_AddItemToArray(vidas, crearObjeto1(150,0,2,0));
-    cJSON_AddItemToArray(vidas, crearObjeto1(-350,0,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(450,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-350,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(150,1,2,0));
+    cJSON_AddItemToArray(vidas, crearObjeto1(-350,1,2,0));
 
     cJSON_AddItemToArray(vidas, crearObjeto1(-1450,1,2,0));
     cJSON_AddItemToArray(vidas, crearObjeto1(-1550,1,2,0));

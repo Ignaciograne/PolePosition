@@ -29,7 +29,7 @@ void juego() {
                             //Destroy window
                             SDL_DestroyWindow( window1 );
                             window1 = NULL;
-                            comenzar();
+                            comenzar(1);
                             break;
                     }
                 }

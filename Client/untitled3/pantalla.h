@@ -14,7 +14,7 @@
 #include "cJSON Parser.h"
 
 
-void comenzar();
+void comenzar(int prin);
 
 static int frame = 0;
 static double seconds;

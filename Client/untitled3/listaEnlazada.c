@@ -101,28 +101,26 @@ void appendU(struct NodeU** head_ref, User new_data){
     if (*head_ref == NULL)
     {
         *head_ref = new_node;
-        printf("Anadido el principio (%d,%d): \n", (*head_ref)->data.posicion.x,(*head_ref)->data.posicion.y );
         return;
     }
 
     /* 5. Else traverse till the last node */
     while (last->next != NULL){
-        printf("posicion x en (%d,%d): \n", last->data.posicion.x,last->data.posicion.y );
         last = last->next;}
 
     /* 6. Change the next of last node */
     last->next = new_node;
-    printf("Anadido el (%d,%d): \n", last->next->data.posicion.x,last->next->data.posicion.y );
 }
 
 void deleteNodeU(struct NodeU** head_ref, User * usi)
 {
-    printf("Llega a delete noce");
+    printf("\nLlega a delete noce\n");
     // Store head node
-    struct NodeU *temp = *head_ref, *prev;
+    struct NodeU *temp = head_ref, *prev;
 
     // If head node itself holds the key to be deleted
     if (temp != NULL && &temp->data == usi) {
+        printf("Primero este (%d,%d) comprado con este(%d,%d)\n", temp->data.posicion.x,temp->data.posicion.y,usi->posicion.x,usi->posicion.y);
         *head_ref = temp->next; // Changed head
         free(temp); // free old head
         return;
@@ -131,11 +129,14 @@ void deleteNodeU(struct NodeU** head_ref, User * usi)
     // Search for the key to be deleted, keep track of the
     // previous node as we need to change 'prev->next'
     while (temp != NULL && &temp->data != usi) {
+        printf("Segundo este (%d,%d) comprado con este(%d,%d)\n", temp->data.posicion.x,temp->data.posicion.y,usi->posicion.x,usi->posicion.y);
         prev = temp;
         temp = temp->next;
+        //printf("Segundo este (%d,%d) comprado con este(%d,%d)\n", temp->data.posicion.x,temp->data.posicion.y,usi->posicion.x,usi->posicion.y);
     }
     // If key was not present in linked list
     if (temp == NULL){
+        printf("temp es nulo");
         return;}
 
     // Unlink the node from linked list

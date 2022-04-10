@@ -5,7 +5,7 @@
 
 #include "pantalla.h"
 
-void comenzar(){
+void comenzar(int prin){
     //The window we'll be rendering to
     srand(time(NULL));
     //Initialize SDL
@@ -18,7 +18,7 @@ void comenzar(){
         window = SDL_CreateWindow( "PolePosition", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         screenSurface = SDL_GetWindowSurface(window);
         renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-        principal = crearUsuario(renderer,"images/carroRojo.bmp",1);
+        //principal = crearUsuario(renderer,"images/carroRojo.bmp",1);
 
         static struct Node * objetos;
         objetos = parsear(&objetos,renderer);
@@ -27,16 +27,17 @@ void comenzar(){
         parsearUsuarios(&usuarios,renderer);
 
         nodeU = &usuarios;
-        /**int prin = 2;
         int i = 0;
         while (nodeU !=NULL){
-            if(i == prin+1){
+            if(i == prin){
                 principal = nodeU->data;
-                deleteNodeU(&usuarios,&nodeU->data);
+                deleteNodeU(&usuarios,&(nodeU->data));
             }
             i++;
             nodeU = nodeU->next;
-        }**/
+        }
+        printf("pantalaa: ");
+        printListU(&usuarios);
 
         image3 = SDL_LoadBMP("images/fondo.bmp");
         fondo = SDL_CreateTextureFromSurface(renderer,image3);
@@ -87,12 +88,14 @@ void comenzar(){
                     printf("Súper power up: %i \n", principal.aceleracion);
                     power = 1;
                 }
-                while (nodeU !=NULL && node->data.aceleracion!=0){
+                nodeU = &usuarios;
+                while (nodeU !=NULL){
                     actualizarPosicion(&nodeU->data, 0, principal.aceleracion-nodeU->data.aceleracion);
-                    printf("aceleracion %d\n",principal.aceleracion-nodeU->data.aceleracion);
+                    //printf("aceleracion %d\n",principal.aceleracion-nodeU->data.aceleracion);
                     nodeU = nodeU->next;
                 }
                 //printf("--- \n\n");
+
                 node = &objetos;
                 while (node != NULL)
                 {
@@ -123,7 +126,7 @@ void comenzar(){
                                     nodeU->data.aceleracion++;
                                 }
 
-                                printf("aceleracion: %d\n\n",nodeU->data.aceleracion);
+                                printf("aceleracion: %d\n\n",nodeU->data.posicion.x);
                                 nodeU = nodeU->next;
                             }
                             break;
@@ -193,7 +196,6 @@ void comenzar(){
             nodeU = &usuarios;
             while (nodeU !=NULL){
                 renderizarUsuario(renderer,&nodeU->data);
-                actualizarPosicion(&nodeU->data, 0, principal.aceleracion-nodeU->data.aceleracion);
                 nodeU = nodeU->next;
             }
 
