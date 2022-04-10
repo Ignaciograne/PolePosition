@@ -38,7 +38,7 @@ typedef struct {
 
 static int num;
 User crearUsuario(SDL_Renderer *renderer, char *path, int posicion);
-Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros);
+Objeto crearOBjeto(SDL_Renderer *renderer, char *path, int metros, int ace);
 
 Imagen crearImagen(SDL_Renderer *renderer, char *path, int cantidadImagenes, int imagenInicial);
 void cambiarImagen(Imagen * img, int imagen);
@@ -48,3 +48,5 @@ void renderizarUsuario(SDL_Renderer * renderer, User * usuario);
 void renderizarObjeto(SDL_Renderer * renderer, Objeto * obj);
 void colocarObjeto(Objeto * obj, int metros);
 #endif //UNTITLED3_USUARIO_H
+
+

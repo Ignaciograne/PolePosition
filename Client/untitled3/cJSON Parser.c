@@ -41,7 +41,7 @@ void getObjetos(cJSON * lista, struct Node *linked, char *path, SDL_Renderer *re
         int p = cJSON_GetObjectItem(item,"position")->valueint;
         int h = cJSON_GetObjectItem(item,"health")->valueint;
         int pp = cJSON_GetObjectItem(item,"points")->valueint;
-        Objeto ob = crearOBjeto(renderer, path, p);
+        Objeto ob = crearOBjeto(renderer, path, p, h);
         append(&linked, ob);
     }
 }
@@ -70,13 +70,13 @@ char * crearJSON(){
     turbos = cJSON_CreateArray();
     huecos = cJSON_CreateArray();
     vidas = cJSON_CreateArray();
-    cJSON_AddItemToArray(turbos, crearObjeto(100,0,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(-200,0,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(-1000,0,2));
-    cJSON_AddItemToArray(turbos, crearObjeto(400,0,2));
+    cJSON_AddItemToArray(turbos, crearObjeto(100,9,2));
+    cJSON_AddItemToArray(turbos, crearObjeto(-200,9,2));
+    cJSON_AddItemToArray(turbos, crearObjeto(-1000,9,2));
+    cJSON_AddItemToArray(turbos, crearObjeto(400,9,2));
 
 
-    cJSON_AddItemToArray(huecos, crearObjeto(300,0,2));
+    cJSON_AddItemToArray(huecos, crearObjeto(300,-9,2));
 
     cJSON_AddItemToArray(vidas, crearObjeto(450,0,2));
     cJSON_AddItemToArray(vidas, crearObjeto(-350,0,2));

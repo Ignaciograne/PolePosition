@@ -20,6 +20,7 @@ void delete_begin();
 void delete_end();
 void delete_pos();
 
+
 struct Node
 {
     Objeto data;
@@ -28,9 +29,11 @@ struct Node
 
 //Lista crearLista();
 //display the list
+static struct Node * node;
 void printList(struct Node *node);
 
 //void insertFirst (Lista *l, int dato);
 void append(struct Node** head_ref, Objeto new_data);
+void colisionObjetos(User * usuario, struct Node *objetos);
 
 #endif //UNTITLED3_LISTAENLAZADA_H

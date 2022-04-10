@@ -48,3 +48,19 @@ void append(struct Node** head_ref, Objeto new_data){
 }
 
 
+
+void colisionObjetos(User * usuario, struct Node *objetos){
+    node = objetos;
+    while (node != NULL){
+        if(SDL_HasIntersection(&usuario->posicion,&node->data.posicion)){
+            usuario->aceleracion = usuario->aceleracion + node->data.aceleracion;
+            if (usuario->aceleracion > 9){
+                usuario->aceleracion = 9;
+            }
+            if (usuario->aceleracion<1){
+                usuario->aceleracion = 1;
+            }
+        }
+        node = node->next;
+    }
+}

@@ -44,7 +44,6 @@ void comenzar(){
         backround.h=600;
 
         int veloc = 0;
-        int aceleracion = 0;
         time(&start);
         int presion = 0;
         int pantallas =0;
@@ -55,15 +54,21 @@ void comenzar(){
             //printf("time %.5f\n",seconds);
             if (seconds == 3 && power){
                 principal.aceleracion = 6;
-                aceleracion = 6;
                 power = 0;
                 printf("Se quita el power \n");
             }
             backround.y = frame ;
-            if (veloc>(10-aceleracion)){
+            if (veloc>(10-principal.aceleracion)){
                 frame--;
                 veloc = 0;
                 //printf("Rojo y Azul están a %i: \n" , principal.posicion.y-usuario2.posicion.y);
+                colisionObjetos(&principal,&objetos);
+                if (principal.aceleracion==9 && !power){
+                    time(&start);
+                    principal.aceleracion=9;
+                    printf("Súper power up: %i \n", principal.aceleracion);
+                    power = 1;
+                }
                 actualizarPosicion(&usuario2, 0, principal.aceleracion-usuario2.aceleracion);
                 node = &objetos;
                 while (node != NULL)
@@ -71,11 +76,8 @@ void comenzar(){
                     actualizarObjeto(&(node->data),1);
                     node = node->next;
                 }
-                /**actualizarObjeto(&objeto1,1);
-                actualizarObjeto(&objeto2, 1);
-                actualizarObjeto(&objeto3,1);**/
             }
-            if (aceleracion != 0){
+            if (principal.aceleracion != 0){
                 veloc++;
             }
             if (SDL_PollEvent((&event))) {
@@ -97,36 +99,32 @@ void comenzar(){
                             }
                             break;
                         case SDLK_UP:
-                            if (aceleracion == 0){
+                            if (principal.aceleracion == 0){
                                 principal.aceleracion = 1;
-                                aceleracion = 1;
                             }
                             presion = presion + 1;
-                            if(aceleracion<7) {
+                            if(principal.aceleracion<7) {
                                 if (presion > 40) {
-                                    printf("Sube aceleracion a: %i \n", aceleracion);
+                                    printf("Sube aceleracion a: %i \n", principal.aceleracion);
                                     principal.aceleracion ++;
-                                    aceleracion++;
                                     presion = 0;
                                 }
                             }
                             break;
                         case SDLK_DOWN:
                             presion = presion + 1;
-                            if(aceleracion>0) {
+                            if(principal.aceleracion>1) {
                                 if (presion > 10) {
-                                    printf("Baja aceleracion a: %i \n", aceleracion);
-                                    aceleracion--;
-                                    principal.aceleracion --;
+                                    printf("Baja aceleracion a: %i \n", principal.aceleracion);
+                                    principal.aceleracion--;
                                     presion = 0;
                                 }
                             }
                             break;
                         case SDLK_SPACE:
                             time(&start);
-                            aceleracion=9;
-                            principal.aceleracion = 9;
-                            printf("Súper power up: %i \n", aceleracion);
+                            principal.aceleracion=9;
+                            printf("Súper power up: %i \n", principal.aceleracion);
                             power = 1;
                             break;
                     }
